@@ -83,10 +83,10 @@ typedef unsigned long int bitset_index_t;
 
 #define bitset_setbit(bitset_name, index, value) \
     do { \
-        if (index >= bitset_size(bitset_name)) \
+        if ((long)index > (long)bitset_size(bitset_name)) \
         { \
             error_exit("bitset_setbit: index %lu out of range 0..%lu.\n", \
-            (unsigned long)index, (unsigned long)bitset_size(bitset_name) - 1); \
+            (unsigned long)index, (unsigned long)bitset_size(bitset_name)); \
         } \
         bitset_index_t array_index = 1 + index / (sizeof(unsigned long) * CHAR_BIT); \
         unsigned int bit_index = index % (sizeof(unsigned long) * CHAR_BIT); \
@@ -95,9 +95,9 @@ typedef unsigned long int bitset_index_t;
     } while (0)
 
 #define bitset_getbit(bitset_name, index) \
-    ((index >= (long int)bitset_size(bitset_name)) ? \
+    (((long)index > (long)bitset_size(bitset_name)) ? \
     error_exit("bitset_getbit: index %lu out of range 0..%lu.\n", \
-    (unsigned long)index, (unsigned long)bitset_size(bitset_name) - 1), 69 \
+    (unsigned long)index, (unsigned long)bitset_size(bitset_name)), 69 \
     : \
     (bitset_name[1 + index / (sizeof(unsigned long) * CHAR_BIT)] >> (index % (sizeof(unsigned long) * CHAR_BIT))) & 1)
 
