@@ -32,11 +32,10 @@ void print_last_primes(bitset_t bitset, unsigned long num_of_primes, unsigned lo
 int main(void)
 {
     clock_t start = clock();
-    bitset_alloc(primes_bitset, N);
+    bitset_create(primes_bitset, N);
     Eratosthenes(primes_bitset);
     print_last_primes(primes_bitset, NUM_TO_PRINT, N);
 
     fprintf(stderr, "Time=%.3g\n", (double)(clock()-start)/CLOCKS_PER_SEC);
-    bitset_free(primes_bitset);
     return 0;
 }

@@ -5,7 +5,7 @@ LDFLAGS=-fsanitize=address
 all: primes no-comment
 
 run: primes
-	./primes
+	ulimit -s unlimited && ./primes
 
 primes: primes.o error.o eratosthenes.o bitset.h
 	$(CC) $(CFLAGS) -o primes primes.o error.o eratosthenes.o $(LDFLAGS) -lm
