@@ -1,7 +1,7 @@
 /**
  * @file no-comment.c
  * @brief Implementation of comment removal tool.
- * @author Ondřej Vomáčka (xvomaco00)
+ * @author Ondřej Vomáčka (xvomaco00), FIT
  * @date 15/03/2024
  *
  * @note First IJC homework part B) solution.

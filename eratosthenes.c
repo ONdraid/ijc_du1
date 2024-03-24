@@ -1,7 +1,7 @@
 /**
  * @file eratosthenes.c
  * @brief Sieve of Eratosthenes algorithm implementation.
- * @author Ondřej Vomáčka (xvomaco00)
+ * @author Ondřej Vomáčka (xvomaco00), FIT
  * @date 15/03/2024
  *
  * @note First IJC homework part A) solution.
