@@ -9,20 +9,31 @@
  */
 
 #include <math.h>
+#include <stdbool.h>
 #include "error.h"
+#include "bitset.h"
 #include "eratosthenes.h"
+
+#ifdef USE_INLINE
+
+extern bitset_index_t bitset_size(bitset_t bitset_name);
+extern void bitset_fill(bitset_t bitset_name, bool value);
+extern void bitset_setbit(bitset_t bitset_name, bitset_index_t index, bool value);
+extern bool bitset_getbit(bitset_t bitset_name, bitset_index_t index);
+
+#endif
 
 void Eratosthenes(bitset_t bitset)
 {
-    unsigned long bitset_size = bitset_size(bitset);
-    bitset_fill(bitset, 1);
-    bitset_setbit(bitset, 0, 0); bitset_setbit(bitset, 1, 0);
+    unsigned long size = bitset_size(bitset);
+    bitset_fill(bitset, true);
+    bitset_setbit(bitset, 0, false); bitset_setbit(bitset, 1, false);
 
-    for (unsigned long i = 2; i < sqrt(bitset_size); i++) {
+    for (unsigned long i = 2; i < sqrt(size); i++) {
         if (!bitset_getbit(bitset, i)) continue;
 
-        for (unsigned long j = i * i; j < bitset_size; j += i) {
-            bitset_setbit(bitset, j, 0);
+        for (unsigned long j = i * i; j < size; j += i) {
+            bitset_setbit(bitset, j, false);
         }
     }
 }
