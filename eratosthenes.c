@@ -23,6 +23,10 @@ extern bool bitset_getbit(bitset_t bitset_name, bitset_index_t index);
 
 #endif
 
+/**
+ * @brief Computes prime numbers up to the given number (stored in bitset).
+ * @param bitset Prime numbers will be stored in this bitset.
+ */
 void Eratosthenes(bitset_t bitset)
 {
     unsigned long size = bitset_size(bitset);

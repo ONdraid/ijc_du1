@@ -1,3 +1,6 @@
+# @author Ondřej Vomáčka (xvomaco00)
+# @date 15/03/2024
+
 CC=gcc
 CFLAGS=-O2 -std=c11 -pedantic -Wall -Wextra -Werror# Optimized
 LDFLAGS=-Wall -Wextra -Werror
@@ -48,8 +51,8 @@ no-comment.o: no-comment.c
 error.o: error.c error.h
 	$(CC) $(CFLAGS) -c error.c
 
-clean:
-	rm -f *~ *.bak *.o *.i *.zip
-
-archive:
+archive: clean
 	zip xvomaco00.zip *.c *.h Makefile
+
+clean:
+	rm -f *~ *.bak *.o *.i *.zip no-comment primes primes-i

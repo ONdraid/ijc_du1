@@ -118,16 +118,32 @@ typedef unsigned long int bitset_index_t;
 
 #else // If USE_INLINE is defined, the functions will be defined as inline functions.
 
+/**
+ * @brief Frees the given bitset_name variable from heap.
+ *
+ * @param bitset_name The name of the bitset variable.
+ */
 inline void bitset_free(bitset_t bitset_name)
 {
     free(bitset_name);
 }
 
+/**
+ * @brief Retrieves the bitset size (in bits) from the given bitset_name variable.
+ *
+ * @param bitset_name The name of the bitset variable.
+ */
 inline bitset_index_t bitset_size(bitset_t bitset_name)
 {
     return bitset_name[0];
 }
 
+/**
+ * @brief Fills the given bitset_name variable with zeros or ones.
+ *
+ * @param bitset_name The name of the bitset variable.
+ * @param value If given true, the bitset will be filled with ones, otherwise with zeros.
+ */
 inline void bitset_fill(bitset_t bitset_name, bool value)
 {
     for (bitset_index_t i = 1; i < bitset_size_to_array_length(bitset_size(bitset_name)); i++) {
@@ -136,6 +152,12 @@ inline void bitset_fill(bitset_t bitset_name, bool value)
     }
 }
 
+/**
+ * @brief Sets the bit at the given index in the bitset_name variable to the given value.
+ *
+ * @param bitset_name The name of the bitset variable.
+ * @param value If given true, the bit will be set to one, otherwise to zero.
+ */
 inline void bitset_setbit(bitset_t bitset_name, bitset_index_t index, bool value)
 {
         if ((long)index > (long)bitset_size(bitset_name))
@@ -149,6 +171,12 @@ inline void bitset_setbit(bitset_t bitset_name, bitset_index_t index, bool value
         else bitset_name[array_index] &= ~((unsigned long)1 << bit_index);
 }
 
+/**
+ * @brief Retrieves the bit at the given index in the bitset_name variable.
+ *
+ * @param bitset_name The name of the bitset variable.
+ * @param index The index of the bit to be retrieved.
+ */
 inline bool bitset_getbit(bitset_t bitset_name, bitset_index_t index)
 {
     if ((long)index > (long)bitset_size(bitset_name))

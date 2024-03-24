@@ -17,6 +17,13 @@
 #define N 666000000 // Upper bound for the prime numbers.
 #define NUM_TO_PRINT 10 // Number of (last) primes to print.
 
+/**
+ * @brief Prints the last prime numbers from the given bitset.
+ *
+ * @param bitset Bitset containing the prime numbers.
+ * @param num_of_primes Number of primes to print.
+ * @param n Upper bound for the prime numbers.
+ */
 void print_last_primes(bitset_t bitset, unsigned long num_of_primes, unsigned long n)
 {
     while (--n > 1) {
@@ -34,7 +41,5 @@ int main(void)
     bitset_create(primes_bitset, N);
     Eratosthenes(primes_bitset);
     print_last_primes(primes_bitset, NUM_TO_PRINT, N);
-
     fprintf(stderr, "Time=%.3g\n", (double)(clock()-start)/CLOCKS_PER_SEC);
-    return 0;
 }
